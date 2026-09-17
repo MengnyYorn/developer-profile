@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Inventory Dashboard</title>
+    <link rel="stylesheet" href="server-styles.css">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>Server Inventory Dashboard</h1>
+            <div class="counters">
+                <div class="stat-card">Total: <span id="total-count">0</span></div>
+                <div class="stat-card">Online: <span id="online-count">0</span></div>
+                <div class="stat-card">Offline: <span id="offline-count">0</span></div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Controls: Add Server Form + Filters -->
+        <section class="dashboard-controls">
+            <!-- Add/Edit Server Form -->
+            <form id="server-form" class="card">
+                <h2 id="form-title">Add New Server</h2>
+                <input type="hidden" id="server-id">
+                
+                <div class="form-group">
+                    <label for="server-name">Server Name</label>
+                    <input type="text" id="server-name" required placeholder="e.g. waf-node-01">
+                </div>
+
+                <div class="form-group">
+                    <label for="server-host">IP / Hostname</label>
+                    <input type="text" id="server-host" required placeholder="e.g. 192.168.0.61">
+                </div>
+
+                <div class="form-group">
+                    <label for="server-env">Environment</label>
+                    <select id="server-env" required>
+                        <option value="production">Production</option>
+                        <option value="staging">Staging</option>
+                        <option value="lab">Lab</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="server-status">Status</label>
+                    <select id="server-status" required>
+                        <option value="online">Online</option>
+                        <option value="offline">Offline</option>
+                    </select>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" id="save-btn">Add Server</button>
+                    <button type="button" id="cancel-btn" style="display: none;">Cancel</button>
+                </div>
+            </form>
+
+            <div class="filter-panel card">
+                <h2>Filter & Search</h2>
+                <div class="form-group">
+                    <label for="search-input">Search Name/Host</label>
+                    <input type="text" id="search-input" placeholder="Type to search...">
+                </div>
+
+                <div class="form-group">
+                    <label for="filter-env">Environment</label>
+                    <select id="filter-env">
+                        <option value="all">All Environments</option>
+                        <option value="production">Production</option>
+                        <option value="staging">Staging</option>
+                        <option value="lab">Lab</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="filter-status">Status</label>
+                    <select id="filter-status">
+                        <option value="all">All Statuses</option>
+                        <option value="online">Online</option>
+                        <option value="offline">Offline</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <section class="table-section card">
+            <h2>Servers List</h2>
+            <table id="server-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Host / IP</th>
+                        <th>Environment</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="server-list">
+                </tbody>
+            </table>
+            <p id="empty-state" style="display: none; text-align: center; padding: 1rem;">No servers match your criteria.</p>
+        </section>
+    </main>
+
+    <script src="server-script.js"></script>
+</body>
+</html>
