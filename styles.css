@@ -16,7 +16,6 @@ body {
     margin-inline: auto;
 }
 
-/* --- 2. Header & Navigation (Flexbox) --- */
 header {
     text-align: center;
     padding: 2rem 0;
@@ -50,7 +49,6 @@ nav a:hover, nav a:focus {
     text-decoration: underline;
 }
 
-/* --- 3. Projects Section (CSS Grid) --- */
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -75,7 +73,6 @@ nav a:hover, nav a:focus {
     font-weight: 600;
 }
 
-/* --- 4. Form Controls & Visible Focus States --- */
 form {
     display: flex;
     flex-direction: column;
@@ -100,7 +97,6 @@ input, textarea, button {
     border-radius: 6px;
 }
 
-/* Clear, obvious focus ring for accessibility */
 input:focus, textarea:focus, button:focus {
     outline: 2px solid #2563eb;
     outline-offset: 2px;
@@ -136,7 +132,6 @@ footer {
     margin-top: 1rem;
 }
 
-/* --- 5. Media Query (Responsive below 768px) --- */
 @media (max-width: 768px) {
     .nav-links {
         flex-direction: column;
